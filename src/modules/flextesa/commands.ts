@@ -50,11 +50,13 @@ export const startFlextesa = (_options: Partial<FlextesaOptions>, readyCallback?
      * --no-daemons-for on every added account. This would have Flextesa not baking
      * anything, so the header block would be empty and Taquito does not really like it!
      */
+    "--set-history-mode", "N000:archive",
+    "--number-of-b", "1",
     "--time-between-blocks", "2",
     "--minimal-block-delay", "1",
     "--pause-on-error=true",
     ...accountsParams,
-    ...tezosNodeParams
+    ...tezosNodeParams,
   ];
   const opts = {};
 
@@ -68,7 +70,6 @@ export const startFlextesa = (_options: Partial<FlextesaOptions>, readyCallback?
   function onErrored(err: Error) {
     flextesa.removeListener("close", onClosed);
     stopFlextesa();
-    
     throw err;
   }
   function onClosed(code: number) {
