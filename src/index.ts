@@ -6,6 +6,7 @@ import { addE2ETestCommand } from './commands/e2e-test';
 import { addInitCommand } from './commands/init';
 import { addPostInstallCommand } from './commands/postinstall';
 import { addStartSandboxCommand } from './commands/start-sandbox';
+import { addStopSandboxCommand } from './commands/stop-sandbox';
 import { addTestCommand } from './commands/test';
 import { debug, setCWD, setDebug } from './console';
 
@@ -42,6 +43,7 @@ const debugHook = (cmd: Command) => {
 
 addInitCommand(program, debugHook);
 addStartSandboxCommand(program, debugHook);
+addStopSandboxCommand(program, debugHook);
 addCompileCommand(program, debugHook);
 addTestCommand(program, debugHook);
 addE2ETestCommand(program, debugHook);

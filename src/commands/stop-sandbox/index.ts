@@ -1,8 +1,7 @@
 import { Command } from 'commander';
 
 import { em, debug, getCWD } from "../../console";
-import { ContractsBundle } from '../../modules/bundle';
-import { startFlextesa } from "../../modules/flextesa";
+import { stopFlextesa } from "../../modules/flextesa";
 
 export const addStopSandboxCommand = (program: Command, debugHook: (cmd: Command) => void) => {
   program
@@ -14,7 +13,7 @@ export const addStopSandboxCommand = (program: Command, debugHook: (cmd: Command
     .hook('preAction', debugHook);
 }
 
-// Full start-sandbox command controller
+// Full stop-sandbox command controller
 export const stopSandbox = async (readyCallback?: () => void) => {
   em(`Stopping Tezos sandbox...\n`);
   stopFlextesa(readyCallback);
